@@ -6,14 +6,14 @@ import xss_tester
 def main():
     print("AltoroJ Simple DAST Application")
 
-    host = "localhost:3000"
+    host = "localhost:8080"
 
-    sql_injection_target_url = host + ""  # replace with valid url
+    sql_injection_target_url = host + "/AltoroJ/login"  # replace with valid url
     xss_target_url = host + ""  # replace too
 
     if TEST_SQL_INJECTION:
         print("[*] Starting SQL Injection Test...\n")
-        result = sql_injection_tester.test(sql_injection_target_url, payload=parse_xss_payload())
+        result = sql_injection_tester.test(sql_injection_target_url, payload=parse_sql_injection_payload()) # MEPA TA INVIERTIDO
         print(f"[*] Test finished, exit code {result}")
         if result == 0:
             print("[*] SQL Injection Vulnerability is not present")
@@ -22,7 +22,7 @@ def main():
 
     elif TEST_XSS:
         print("[*] Starting XSS Test...\n")
-        result = xss_tester.test(xss_target_url, payload=parse_sql_injection_payload())
+        result = xss_tester.test(xss_target_url, payload=parse_xss_payload())
         print(f"[*] Test finished, exit code {result}")
         if result == 0:
             print("[*] XSS Vulnerability is not present")

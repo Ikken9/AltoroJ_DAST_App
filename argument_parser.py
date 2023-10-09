@@ -16,7 +16,7 @@ def argument_parser():
                         help="Operating Test Mode\n" +
                              "[1] SQL Injection Test\n" +
                              "[2] XSS Test",
-                        choices=[1, 2],
+                        choices=['1', '2'],
                         required=True)
 
     parser.add_argument("-p", "--payload",
