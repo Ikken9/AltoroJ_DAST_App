@@ -1,6 +1,7 @@
 from argument_parser import TEST_UI_SQL_INJECTION, TEST_API_SQL_INJECTION, TEST_XSS, payload_files
 import sql_injection_tester
 import xss_tester
+import sys
 
 
 def main():
@@ -20,6 +21,7 @@ def main():
             print("[*] SQL UI Injection Vulnerability is not present")
         elif result == 1:
             print("[*] SQL UI Injection Vulnerability is present")
+        sys.exit(result)
 
     elif TEST_API_SQL_INJECTION:
         print("[*] Starting SQL API Injection Test...\n")
@@ -29,15 +31,17 @@ def main():
             print("[*] SQL API Injection Vulnerability is not present")
         elif result == 1:
             print("[*] SQL API Injection Vulnerability is present")
+        sys.exit(result)
 
     elif TEST_XSS:
         print("[*] Starting XSS Test...\n")
-        result = xss_tester.test(xss_target_url, payload=parse_payload())
+        result = xss_tester.test_xss(xss_target_url, payload=parse_payload())
         print(f"[*] Test finished, exit code {result}")
         if result == 0:
             print("[*] XSS Vulnerability is not present")
         elif result == 1:
             print("[*] XSS Vulnerability is present")
+        sys.exit(result)
 
 
 def parse_payload():

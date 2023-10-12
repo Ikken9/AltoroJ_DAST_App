@@ -1,7 +1,7 @@
 import requests
 
 
-def test(url, payload):
+def test_xss(url, payload):
     for data in payload:
         url = url + "?query=" + data
         res = requests.get(url=url)
