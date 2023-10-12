@@ -24,15 +24,19 @@ Parameters:
     
     -m, --mode <[1, 2, 3]> (required)
             [1] UI SQL Injection Test
-            [2] API SQL Injection Test
             [2] XSS Test
+            [3] API SQL Injection Test
     -p, --payload <path_to_payload_file> (required)
 
 ### Examples
 
-    python ./main.py -m 1 -p payloads/sql_payloads.txt
+``` Bash
+python ./main.py -m 1 -p payloads/sql_payloads.txt
 
-    python ./main.py -m 2 -p payloads/xss_payloads.txt
+python ./main.py -m 2 -p payloads/xss_payloads.txt
+
+python ./main.py -m 3 -p payloads/sql_payloads.txt
+```
 
 ### Note: 
 AltoroJ must be running on TCP port 8080 (if not, you can change the code to match the port you want to use). 
